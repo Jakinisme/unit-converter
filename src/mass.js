@@ -1,8 +1,11 @@
 const massForm = document.getElementById("mass-form");
+
 const massAnswer = document.getElementById("Mass-Answer");
-const massUnit = document.getElementById("Mass-Unit");
 const toMass = document.getElementById("To-Mass");
+
+const massUnit = document.getElementById("Mass-Unit");
 const massValue = document.getElementById("Mass-Value");
+
 const massSwitch = document.getElementById("Mass-Switch");
 
 // Add event listeners
@@ -21,6 +24,11 @@ function switchMassUnits() {
 
 function convertMass() {
     const value = massValue.value;
+
+    if (value === "") {
+        alert("Please enter a value");
+        return;
+    }
 
     let ToAny;
     if (massUnit.value === "Milligram") {

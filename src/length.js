@@ -1,48 +1,56 @@
-const form = document.querySelector("form");
-const answer = document.getElementById("Answer-Length");
-const unit = document.getElementById("Length-Unit");
-const toConvert = document.getElementById("Length-Convert");
-const inputValue = document.getElementById("Convert");
-const switchBtn = document.getElementById("Length-Switch");
+const lengthForm = document.getElementById("length-form");
+
+const lengthAnswer = document.getElementById("Answer-Length");
+const lengthInput = document.getElementById("To-Length");
+
+const lengthUnit = document.getElementById("Length-Unit");
+const lengthConvert = document.getElementById("Length-Convert");
+
+const lengthSwitch = document.getElementById("Length-Switch");
 
 // Add event listeners
-form.addEventListener("submit", function(e) {
+lengthForm.addEventListener("submit", function(e) {
     e.preventDefault();
     convert();
 });
 
-switchBtn.addEventListener("click", switchUnits);
+lengthSwitch.addEventListener("click", switchUnits);
 
 function switchUnits() {
-    const tempUnit = unit.value;
-    unit.value = toConvert.value;
-    toConvert.value = tempUnit;
+    const tempUnit = lengthUnit.value;
+    lengthUnit.value = lengthConvert.value;
+    lengthConvert.value = tempUnit;
 }
 
 function convert() {
-    const value = inputValue.value
+    const value = lengthInput.value
+
+    if (value === "") {
+        alert("Please enter a value");
+        return;
+    }
     
     let ToAny;
-    if (unit.value === "Millimeter") {
+    if (lengthUnit.value === "Millimeter") {
         ToAny = value / 1000;
-    } else if (unit.value === "Centimeter") {
+    } else if (lengthUnit.value === "Centimeter") {
         ToAny = value / 100;
-    } else if (unit.value === "Meter") {
+    } else if (lengthUnit.value === "Meter") {
         ToAny = value; // Meter is the base unit
-    } else if (unit.value === "Kilometer") {
+    } else if (lengthUnit.value === "Kilometer") {
         ToAny = value * 1000;
     }
 
     let result;
-    if (toConvert.value === "Millimeter") {
+    if (lengthConvert.value === "Millimeter") {
         result = ToAny * 1000;
-    } else if (toConvert.value === "Centimeter") {
+    } else if (lengthConvert.value === "Centimeter") {
         result = ToAny * 100;
-    } else if (toConvert.value === "Meter") {
+    } else if (lengthConvert.value === "Meter") {
         result = ToAny;
-    } else if (toConvert.value === "Kilometer") {
+    } else if (lengthConvert.value === "Kilometer") {
         result = ToAny / 1000;
     }
     
-    answer.value = result;
+    lengthAnswer.value = result;
 } 
