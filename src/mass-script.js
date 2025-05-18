@@ -22,28 +22,26 @@ function switchMassUnits() {
 function convertMass() {
     const value = massValue.value;
 
-    // Convert to grams first (base unit)
-    let grams;
+    let ToAny;
     if (massUnit.value === "Milligram") {
-        grams = value / 1000;
+        ToAny = value / 1000;
     } else if (massUnit.value === "Gram") {
-        grams = value;
+        ToAny = value;
     } else if (massUnit.value === "Kilogram") {
-        grams = value * 1000;
+        ToAny = value * 1000;
     } else if (massUnit.value === "Ton") {
-        grams = value * 1000000;
+        ToAny = value * 1000000;
     }
     
-    // Convert from grams to target unit
     let result;
     if (toMass.value === "Milligram") {
-        result = grams * 1000;
+        result = ToAny * 1000;
     } else if (toMass.value === "Gram") {
-        result = grams;
+        result = ToAny;
     } else if (toMass.value === "Kilogram") {
-        result = grams / 1000;
+        result = ToAny / 1000;
     } else if (toMass.value === "Ton") {
-        result = grams / 1000000;
+        result = ToAny / 1000000;
     }
 
     massAnswer.value = result;

@@ -22,28 +22,26 @@ function switchUnits() {
 function convert() {
     const value = inputValue.value
     
-    // Convert to meters first (base unit)
-    let meters;
+    let ToAny;
     if (unit.value === "Millimeter") {
-        meters = value / 1000;
+        ToAny = value / 1000;
     } else if (unit.value === "Centimeter") {
-        meters = value / 100;
+        ToAny = value / 100;
     } else if (unit.value === "Meter") {
-        meters = value;
+        ToAny = value;
     } else if (unit.value === "Kilometer") {
-        meters = value * 1000;
+        ToAny = value * 1000;
     }
-    
-    // Convert from meters to target unit
+
     let result;
     if (toConvert.value === "Millimeter") {
-        result = meters * 1000;
+        result = ToAny * 1000;
     } else if (toConvert.value === "Centimeter") {
-        result = meters * 100;
+        result = ToAny * 100;
     } else if (toConvert.value === "Meter") {
-        result = meters;
+        result = ToAny;
     } else if (toConvert.value === "Kilometer") {
-        result = meters / 1000;
+        result = ToAny / 1000;
     }
     
     answer.value = result;
