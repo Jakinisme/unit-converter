@@ -20,7 +20,6 @@ function switchUnits() {
 }
 
 function convert() {
-    // Get the input value
     const value = parseFloat(inputValue.value);
     
     if (isNaN(value)) {

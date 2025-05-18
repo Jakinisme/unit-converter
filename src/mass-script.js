@@ -20,7 +20,6 @@ function switchMassUnits() {
 }
 
 function convertMass() {
-    // Get the input value
     const value = parseFloat(massValue.value);
 
     if (isNaN(value)) {
