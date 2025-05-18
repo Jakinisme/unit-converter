@@ -20,12 +20,7 @@ function switchUnits() {
 }
 
 function convert() {
-    const value = parseFloat(inputValue.value);
-    
-    if (isNaN(value)) {
-        answer.value = "Please enter a valid number";
-        return;
-    }
+    const value = inputValue.value
     
     // Convert to meters first (base unit)
     let meters;

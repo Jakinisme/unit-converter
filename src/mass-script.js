@@ -20,13 +20,8 @@ function switchMassUnits() {
 }
 
 function convertMass() {
-    const value = parseFloat(massValue.value);
+    const value = massValue.value;
 
-    if (isNaN(value)) {
-        massAnswer.value = "Please enter a valid number";
-        return;
-    }
-    
     // Convert to grams first (base unit)
     let grams;
     if (massUnit.value === "Milligram") {
