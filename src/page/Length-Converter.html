@@ -8,13 +8,15 @@
 </head>
 <body>
     <form action="" id="length-form">
-        <label for="Length-Converter">Length to Convert:</label>
+
+        <label for="Length-Unit">Length to Convert:</label>
         <select name="Length-Unit" id="Length-Unit">
             <option value="Millimeter">Millimeter</option>
             <option value="Centimeter">Centimeter</option>
             <option value="Meter">Meter</option>
             <option value="Kilometer">Kilometer</option>
         </select>
+
         <input type="number" name="To-Length" id="To-Length">
         <button type="button" id="Switch-Converter"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
         <select name="Length-Convert" id="Length-Convert">
@@ -23,6 +25,7 @@
             <option value="Meter">Meter</option>
             <option value="Kilometer">Kilometer</option>
         </select>
+
         <input type="number" name="Answer-Length" id="Answer-Length" disabled>
         <button type="submit">Convert</button>
     </form>
