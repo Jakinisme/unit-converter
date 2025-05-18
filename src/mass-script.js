@@ -26,7 +26,7 @@ function convertMass() {
     if (massUnit.value === "Milligram") {
         ToAny = value / 1000;
     } else if (massUnit.value === "Gram") {
-        ToAny = value;
+        ToAny = value; // Gram is the base unit
     } else if (massUnit.value === "Kilogram") {
         ToAny = value * 1000;
     } else if (massUnit.value === "Ton") {

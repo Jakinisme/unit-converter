@@ -28,7 +28,7 @@ function convert() {
     } else if (unit.value === "Centimeter") {
         ToAny = value / 100;
     } else if (unit.value === "Meter") {
-        ToAny = value;
+        ToAny = value; // Meter is the base unit
     } else if (unit.value === "Kilometer") {
         ToAny = value * 1000;
     }
