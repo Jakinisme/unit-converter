@@ -52,10 +52,5 @@ function convert() {
         result = meters / 1000;
     }
     
-    // Display the result with appropriate precision
-    if (result < 1) {
-        answer.value = result.toFixed(6);
-    } else {
-        answer.value = result.toFixed(2);
-    }
+    answer.value = result;
 } 

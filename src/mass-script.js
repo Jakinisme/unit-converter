@@ -22,7 +22,7 @@ function switchMassUnits() {
 function convertMass() {
     // Get the input value
     const value = parseFloat(massValue.value);
-    
+
     if (isNaN(value)) {
         massAnswer.value = "Please enter a valid number";
         return;
@@ -51,11 +51,6 @@ function convertMass() {
     } else if (toMass.value === "Ton") {
         result = grams / 1000000;
     }
-    
-    // Display the result with appropriate precision
-    if (result < 1) {
-        massAnswer.value = result.toFixed(6);
-    } else {
-        massAnswer.value = result.toFixed(2);
-    }
-} 
+
+    massAnswer.value = result;
+}
