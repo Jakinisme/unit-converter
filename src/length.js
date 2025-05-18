@@ -1,9 +1,9 @@
 const form = document.querySelector("form");
-const answer = document.getElementById("Answer-Convert");
-const unit = document.getElementById("Unit-Converter");
-const toConvert = document.getElementById("To-Convert");
+const answer = document.getElementById("Answer-Length");
+const unit = document.getElementById("Length-Unit");
+const toConvert = document.getElementById("Length-Convert");
 const inputValue = document.getElementById("Convert");
-const switchBtn = document.getElementById("Switch-Converter");
+const switchBtn = document.getElementById("Length-Switch");
 
 // Add event listeners
 form.addEventListener("submit", function(e) {
