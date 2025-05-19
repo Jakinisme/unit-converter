@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style/style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
+    <title>Mass Converter</title>
+</head>
+<body>
+    <form action="" id="volume-form">
+        
+        <label for="Volume-Unit">Volume to Convert:</label>
+        <select name="Volume-Unit" id="Volume-Unit">
+            <option value="Milliliter" selected>Milliliter</option>
+            <option value="Liter">Liter</option>
+            <option value="Gallon">Gallon</option>
+            <option value="Cubic-Meter">Cubic Meter</option>
+            <option value="Cubic-Foot">Cubic Foot</option>
+            <option value="Cubic-Inch">Cubic Inch</option>
+        </select>
+        <input type="text" name="Volume-Value" id="Volume-Value">
+
+        <button type="button" id="Volume-Switch"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
+
+        <select name="To-Volume" id="To-Volume">
+            <option value="Milliliter">Milliliter</option>
+            <option value="Liter" selected>Liter</option>
+            <option value="Gallon">Gallon</option>
+            <option value="Cubic-Meter">Cubic Meter</option>
+            <option value="Cubic-Foot">Cubic Foot</option>
+            <option value="Cubic-Inch">Cubic Inch</option>
+        </select>
+
+        <input type="text" name="Volume-Answer" id="Volume-Answer" disabled>
+        <button type="submit">Convert</button>
+        
+    </form>
+    
+    <div class="nav-links">
+        <a href="../../index.html">Back to Home</a>
+        <a href="Length-Converter.html">Length Converter</a>
+        <a href="Mass-Converter.html">Mass Converter</a>
+    </div>
+
+    <script src="../../src/theme.js"></script>
+    <script src="../../src/volume.js"></script>
+</body>
+</html>
