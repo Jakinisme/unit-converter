@@ -72,4 +72,4 @@ Contributions are welcome! Feel free to fork this repository and submit pull req
 
 ## License
 
-No license!, you can freely use my code
+No license! you can freely use my code
