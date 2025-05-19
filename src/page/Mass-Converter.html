@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
     <title>Mass Converter</title>
 </head>
 <body>
@@ -11,23 +12,29 @@
         
         <label for="Mass-Unit">Mass to Convert:</label>
         <select name="Mass-Unit" id="Mass-Unit">
+            <option value="Microgram">Microgram</option>
             <option value="Milligram">Milligram</option>
-            <option value="Gram">Gram</option>
+            <option value="Gram" selected>Gram</option>
             <option value="Kilogram">Kilogram</option>
             <option value="Ton">Ton</option>
+            <option value="Pound">Pound</option>
+            <option value="Ounce">Ounce</option>
         </select>
-        <input type="number" name="Mass-Value" id="Mass-Value">
+        <input type="text" name="Mass-Value" id="Mass-Value">
 
         <button type="button" id="Mass-Switch"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
 
         <select name="To-Mass" id="To-Mass">
+            <option value="Microgram">Microgram</option>
             <option value="Milligram">Milligram</option>
             <option value="Gram">Gram</option>
-            <option value="Kilogram">Kilogram</option>
+            <option value="Kilogram" selected>Kilogram</option>
             <option value="Ton">Ton</option>
+            <option value="Pound">Pound</option>
+            <option value="Ounce">Ounce</option>
         </select>
 
-        <input type="number" name="Mass-Answer" id="Mass-Answer" disabled>
+        <input type="text" name="Mass-Answer" id="Mass-Answer" disabled>
         <button type="submit">Convert</button>
         
     </form>

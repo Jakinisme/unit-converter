@@ -23,34 +23,91 @@
     }
 
     function convertLength() {
-        const value = lengthInput.value
+        const inputValue = lengthInput.value
 
-        if (value === "") {
+        if (inputValue === "") {
             alert("Please enter a value");
             return;
         }
-        
-        let ToAny;
-        if (lengthUnit.value === "Millimeter") {
-            ToAny = value / 1000;
-        } else if (lengthUnit.value === "Centimeter") {
-            ToAny = value / 100;
-        } else if (lengthUnit.value === "Meter") {
-            ToAny = value; // Meter is the base unit
-        } else if (lengthUnit.value === "Kilometer") {
-            ToAny = value * 1000;
+
+        if (isNaN(inputValue)) {
+            alert("Please enter a valid number");
+            return;
         }
 
-        let result;
-        if (lengthConvert.value === "Millimeter") {
-            result = ToAny * 1000;
-        } else if (lengthConvert.value === "Centimeter") {
-            result = ToAny * 100;
-        } else if (lengthConvert.value === "Meter") {
-            result = ToAny;
-        } else if (lengthConvert.value === "Kilometer") {
-            result = ToAny / 1000;
+        let fromMeter;
+        switch (lengthUnit.value) {
+            case "Nanometer":
+                fromMeter = inputValue / 1000000;
+                break;
+            case "Micrometer":
+                fromMeter = inputValue / 1000;
+                break;
+            case "Millimeter":
+                fromMeter = inputValue / 1000;
+                break;
+            case "Centimeter":
+                fromMeter = inputValue / 100;
+                break;
+            case "Meter": // Meter is the base unit
+                fromMeter = inputValue;
+                break;
+            case "Kilometer":
+                fromMeter = inputValue * 1000;
+                break;
+            case "Mile":
+                fromMeter = inputValue * 1609.34;
+                break;
+            case "Yard":
+                fromMeter = inputValue * 0.9144;
+                break;
+            case "Foot":
+                fromMeter = inputValue * 0.3048;
+                break;
+            case "Inch":
+                fromMeter = inputValue * 0.0254;
+                break;
+            case "Nautical-Mile":
+                fromMeter = inputValue * 1852;
+                break;
         }
+
+        let toAny;
+        switch (lengthConvert.value) {
+            case "Nanometer":
+                toAny = fromMeter * 1000000;
+                break;
+            case "Micrometer":
+                toAny = fromMeter * 1000;
+                break;
+            case "Millimeter":
+                toAny = fromMeter * 1000;
+                break;
+            case "Centimeter":
+                toAny = fromMeter * 100;
+                break;
+            case "Meter": // Meter is the base unit
+                toAny = fromMeter;
+                break;
+            case "Kilometer":
+                toAny = fromMeter / 1000;
+                break;
+            case "Mile":
+                toAny = fromMeter / 1609.34;
+                break;
+            case "Yard":
+                toAny = fromMeter / 0.9144;
+                break; 
+            case "Foot":
+                toAny = fromMeter / 0.3048;
+                break;
+            case "Inch":
+                toAny = fromMeter / 0.0254;
+                break;
+            case "Nautical-Mile":
+                toAny = fromMeter / 1852;
+                break;
+        }   
         
-        lengthAnswer.value = result;
+        lengthAnswer.value = toAny;
     } 

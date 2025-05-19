@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/style.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
     <title>Length Converter</title>
 </head>
 <body>
@@ -11,23 +12,37 @@
 
         <label for="Length-Unit">Length to Convert:</label>
         <select name="Length-Unit" id="Length-Unit">
+            <option value="Nanometer">Nanometer</option>
+            <option value="Micrometer">Micrometer</option>
             <option value="Millimeter">Millimeter</option>
             <option value="Centimeter">Centimeter</option>
-            <option value="Meter">Meter</option>
+            <option value="Meter" selected>Meter</option>
             <option value="Kilometer">Kilometer</option>
+            <option value="Mile">Mile</option>
+            <option value="Yard">Yard</option>
+            <option value="Foot">Foot</option>
+            <option value="Inch">Inch</option>
+            <option value="Nautical-Mile">Nautical Mile</option>
         </select>
-        <input type="number" name="To-Length" id="To-Length">
+        <input type="text" name="To-Length" id="To-Length">
 
         <button type="button" id="Length-Switch"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
 
         <select name="Length-Convert" id="Length-Convert">
+            <option value="Nanometer">Nanometer</option>
+            <option value="Micrometer">Micrometer</option>
             <option value="Millimeter">Millimeter</option>
             <option value="Centimeter">Centimeter</option>
             <option value="Meter">Meter</option>
-            <option value="Kilometer">Kilometer</option>
+            <option value="Kilometer" selected>Kilometer</option>
+            <option value="Mile">Mile</option>
+            <option value="Yard">Yard</option>
+            <option value="Foot">Foot</option>
+            <option value="Inch">Inch</option>
+            <option value="Nautical-Mile">Nautical Mile</option>
         </select>
 
-        <input type="number" name="Answer-Length" id="Answer-Length" disabled>
+        <input type="text" name="Answer-Length" id="Answer-Length" disabled>
         <button type="submit">Convert</button>
         
     </form>

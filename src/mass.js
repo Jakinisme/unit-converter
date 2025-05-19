@@ -30,27 +30,60 @@ function convertMass() {
         return;
     }
 
-    let ToAny;
-    if (massUnit.value === "Milligram") {
-        ToAny = value / 1000;
-    } else if (massUnit.value === "Gram") {
-        ToAny = value; // Gram is the base unit
-    } else if (massUnit.value === "Kilogram") {
-        ToAny = value * 1000;
-    } else if (massUnit.value === "Ton") {
-        ToAny = value * 1000000;
-    }
-    
-    let result;
-    if (toMass.value === "Milligram") {
-        result = ToAny * 1000;
-    } else if (toMass.value === "Gram") {
-        result = ToAny;
-    } else if (toMass.value === "Kilogram") {
-        result = ToAny / 1000;
-    } else if (toMass.value === "Ton") {
-        result = ToAny / 1000000;
+    if (isNaN(value)) {
+        alert("Please enter a valid number");
+        return;
     }
 
-    massAnswer.value = result;
+    let fromGram;
+    switch (massUnit.value) {
+        case "Microgram":
+            fromGram = value / 1000000;
+            break;
+        case "Milligram":
+            fromGram = value / 1000;
+            break;
+        case "Gram":
+            fromGram = value; // Gram is the base unit
+            break;
+        case "Kilogram":
+            fromGram = value * 1000;
+            break;
+        case "Ton":
+            fromGram = value * 1000000;
+            break;
+        case "Pound":
+            fromGram = value * 453.592;
+            break;
+        case "Ounce":
+            fromGram = value * 28.3495;
+            break;
+    }
+    
+    let toAny;
+    switch (toMass.value) {
+        case "Microgram":
+            toAny = fromGram * 1000000;
+            break;
+        case "Milligram":
+            toAny = fromGram * 1000;
+            break;
+        case "Gram":
+            toAny = fromGram;
+            break;
+        case "Kilogram":
+            toAny = fromGram / 1000;
+            break;
+        case "Ton":
+            toAny = fromGram / 1000000;
+            break;
+        case "Pound":
+            toAny = fromGram / 453.592;
+            break;
+        case "Ounce":
+            toAny = fromGram / 28.3495;
+            break;
+    }
+
+    massAnswer.value = toAny;
 }
