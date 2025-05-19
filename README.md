@@ -19,8 +19,8 @@ Visit the live application: [Unit Converter](https://unit-converter-orcin-eta.ve
 
 ## Usage
 
-Simply open the application in a web browser:
-= 
+Simply open the application in a web browser
+
 # Start the application
 
 you can open the `index.html` file directly in your browser.
