@@ -1,4 +1,3 @@
-
 const volumeList = document.getElementById("Volume-List");
 const volumeInput = document.getElementById("To-Volume");
 
@@ -54,6 +53,13 @@ function switchUnits() {
 // Update the answer
 function updateVolumeAnswer() {
     const convertedVolume = convertVol();    
+
+    if (volumeList.value === "" || volumeConverter.value === "") {
+        volumeInput.value = "";
+        volumeAnswer.value = "";
+        return alert("Please select a unit first");
+    }
+
     volumeAnswer.value = convertedVolume.toAny;
 }
 
@@ -63,8 +69,7 @@ function convertVol() {
 
     if (volumeList.value === "") {
         volumeInput.value = "";
-        alert("Please select a unit");
-        return;
+        return alert("Please select a unit");
     }
 
     if (inputValue === "" || isNaN(inputValue)) {
@@ -118,5 +123,4 @@ function convertVol() {
     }
     
     volumeAnswer.value = toAny;
-    return { toAny };
 }

@@ -53,7 +53,14 @@ function switchUnits() {
 
 // Update the answer
 function updateMassAnswer() {
-    const convertedMass = convertMass();    
+    const convertedMass = convertMass();
+
+    if (massList.value === "" || massConverter.value === "") {
+        massInput.value = "";
+        massAnswer.value = "";
+        alert("Please select a unit first")
+        return
+    }
     massAnswer.value = convertedMass.toAny;
 }
 
@@ -124,5 +131,4 @@ function convertMass() {
     }
 
     massAnswer.value = toAny;
-    return { toAny };
 }

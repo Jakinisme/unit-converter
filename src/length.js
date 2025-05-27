@@ -55,7 +55,14 @@
 
     // Update the answer
     function updateLengthAnswer() {
-        const convertedLength = convertLength();    
+        const convertedLength = convertLength();
+
+        if (lengthList.value === "" || lengthConverter.value === "") {
+            lengthInput.value = ""
+            lengthAnswer.value = ""
+            return alert("Please select a unit first");
+        }
+
         lengthAnswer.value = convertedLength.toAny;
     }
 
@@ -65,8 +72,7 @@
 
         if (lengthList.value === "") {
             lengthInput.value = "";
-            alert("Please select a unit");
-            return;
+            return alert("Please select a unit");
         }
 
         if (inputValue === "" || isNaN(inputValue)) {
