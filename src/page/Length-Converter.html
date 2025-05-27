@@ -8,44 +8,42 @@
     <title>Length Converter</title>
 </head>
 <body>
-    <form action="" id="length-form">
-
         <label for="Length-Unit">Length to Convert:</label>
-        <select name="Length-Unit" id="Length-Unit">
-            <option value="Nanometer">Nanometer</option>
-            <option value="Micrometer">Micrometer</option>
-            <option value="Millimeter">Millimeter</option>
-            <option value="Centimeter">Centimeter</option>
-            <option value="Meter" selected>Meter</option>
-            <option value="Kilometer">Kilometer</option>
-            <option value="Mile">Mile</option>
-            <option value="Yard">Yard</option>
-            <option value="Foot">Foot</option>
-            <option value="Inch">Inch</option>
-            <option value="Nautical-Mile">Nautical Mile</option>
-        </select>
+        <input list="Length-Unit" id="Length-List" name="Length-List" placeholder="Select a unit">
+
+        <datalist id="Length-Unit">
+            <option value="Nanometer">
+            <option value="Micrometer">
+            <option value="Millimeter">
+            <option value="Centimeter">
+            <option value="Meter" selected>
+            <option value="Kilometer">
+            <option value="Mile">
+            <option value="Yard">
+            <option value="Foot">
+            <option value="Inch">
+            <option value="Nautical-Mile">
+        </datalist>
         <input type="text" name="To-Length" id="To-Length">
 
         <button type="button" id="Length-Switch"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
 
-        <select name="Length-Convert" id="Length-Convert">
-            <option value="Nanometer">Nanometer</option>
-            <option value="Micrometer">Micrometer</option>
-            <option value="Millimeter">Millimeter</option>
-            <option value="Centimeter">Centimeter</option>
-            <option value="Meter">Meter</option>
-            <option value="Kilometer" selected>Kilometer</option>
-            <option value="Mile">Mile</option>
-            <option value="Yard">Yard</option>
-            <option value="Foot">Foot</option>
-            <option value="Inch">Inch</option>
-            <option value="Nautical-Mile">Nautical Mile</option>
-        </select>
+        <input list="Length-Convert" id="Length-Converter" placeholder="Select a unit">
+        <datalist id="Length-Convert">
+            <option value="Nanometer">
+            <option value="Micrometer">
+            <option value="Millimeter">
+            <option value="Centimeter">
+            <option value="Meter">
+            <option value="Kilometer" selected>
+            <option value="Mile">
+            <option value="Yard">
+            <option value="Foot">
+            <option value="Inch">
+            <option value="Nautical-Mile">
+        </datalist>
 
         <input type="text" name="Answer-Length" id="Answer-Length" disabled>
-        <button type="submit">Convert</button>
-        
-    </form>
     
     <div class="nav-links">
         <a href="../../index.html">Back to Home</a>

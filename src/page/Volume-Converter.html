@@ -5,37 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
-    <title>Mass Converter</title>
+    <title>Volume Converter</title>
 </head>
 <body>
-    <form action="" id="volume-form">
-        
         <label for="Volume-Unit">Volume to Convert:</label>
-        <select name="Volume-Unit" id="Volume-Unit">
-            <option value="Milliliter" selected>Milliliter</option>
-            <option value="Liter">Liter</option>
-            <option value="Gallon">Gallon</option>
-            <option value="Cubic-Meter">Cubic Meter</option>
-            <option value="Cubic-Foot">Cubic Foot</option>
-            <option value="Cubic-Inch">Cubic Inch</option>
-        </select>
-        <input type="text" name="Volume-Value" id="Volume-Value">
+        <input list="Volume-Unit" id="Volume-List" name="Volume-List" placeholder="Select a unit">
+
+        <datalist id="Volume-Unit">
+            <option value="Milliliter" selected>
+            <option value="Liter">
+            <option value="Gallon">
+            <option value="Cubic-Meter">
+            <option value="Cubic-Foot">
+            <option value="Cubic-Inch">
+        </datalist>
+        <input type="text" name="To-Volume" id="To-Volume">
 
         <button type="button" id="Volume-Switch"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
 
-        <select name="To-Volume" id="To-Volume">
-            <option value="Milliliter">Milliliter</option>
-            <option value="Liter" selected>Liter</option>
-            <option value="Gallon">Gallon</option>
-            <option value="Cubic-Meter">Cubic Meter</option>
-            <option value="Cubic-Foot">Cubic Foot</option>
-            <option value="Cubic-Inch">Cubic Inch</option>
-        </select>
+        <input list="Volume-Convert" id="Volume-Converter" placeholder="Select a unit">
+        <datalist id="Volume-Convert">
+            <option value="Milliliter">
+            <option value="Liter" selected>
+            <option value="Gallon">
+            <option value="Cubic-Meter">
+            <option value="Cubic-Foot">
+            <option value="Cubic-Inch">
+        </datalist>
 
         <input type="text" name="Volume-Answer" id="Volume-Answer" disabled>
-        <button type="submit">Convert</button>
-        
-    </form>
     
     <div class="nav-links">
         <a href="../../index.html">Back to Home</a>

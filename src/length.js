@@ -1,42 +1,82 @@
-    const lengthForm = document.getElementById("length-form");
 
-    const lengthAnswer = document.getElementById("Answer-Length");
+    const lengthList = document.getElementById("Length-List");
     const lengthInput = document.getElementById("To-Length");
 
-    const lengthUnit = document.getElementById("Length-Unit");
-    const lengthConvert = document.getElementById("Length-Convert");
+    const lengthAnswer = document.getElementById("Answer-Length");
+    const lengthConverter = document.getElementById("Length-Converter");
 
     const lengthSwitch = document.getElementById("Length-Switch");
 
     // Add event listeners
-    lengthForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-        convertLength();
-    });
+    lengthInput.addEventListener("input", updateLengthAnswer);
 
     lengthSwitch.addEventListener("click", switchUnits);
 
+    lengthList.addEventListener("input", function() {
+        const validUnits = [
+            "Nanometer", "Micrometer", "Millimeter", "Centimeter", "Meter",
+            "Kilometer", "Mile", "Yard", "Foot", "Inch", "Nautical-Mile"
+        ];
+        
+        // Only validate when the input loses focus (blur event)
+        lengthList.addEventListener("blur", function() {
+            if (!validUnits.includes(lengthList.value)) {
+                lengthList.value = "";
+            }
+        });
+    });
+
+    lengthConverter.addEventListener("input", function() {
+        const validUnits = [
+            "Nanometer", "Micrometer", "Millimeter", "Centimeter", "Meter",
+            "Kilometer", "Mile", "Yard", "Foot", "Inch", "Nautical-Mile"
+        ];
+        
+        // Only validate when the input loses focus (blur event)
+        lengthConverter.addEventListener("blur", function() {
+            if (!validUnits.includes(lengthConverter.value)) {
+                lengthConverter.value = "";
+            }
+        });
+    });
+
+    // Switch the units
     function switchUnits() {
-        const tempUnit = lengthUnit.value;
-        lengthUnit.value = lengthConvert.value;
-        lengthConvert.value = tempUnit;
-    }
+        const tempUnit = lengthList.value;
 
-    function convertLength() {
-        const inputValue = lengthInput.value
-
-        if (inputValue === "") {
-            alert("Please enter a value");
+        if (tempUnit === "" || lengthConverter.value === "") {
+            alert("Please select a unit");
             return;
         }
 
-        if (isNaN(inputValue)) {
-            alert("Please enter a valid number");
+        lengthList.value = lengthConverter.value;
+        lengthConverter.value = tempUnit;
+    }
+
+    // Update the answer
+    function updateLengthAnswer() {
+        const convertedLength = convertLength();    
+        lengthAnswer.value = convertedLength.toAny;
+    }
+
+    // Convert the length
+    function convertLength() {
+        const inputValue = lengthInput.value
+
+        if (lengthList.value === "") {
+            lengthInput.value = "";
+            alert("Please select a unit");
+            return;
+        }
+
+        if (inputValue === "" || isNaN(inputValue)) {
+            lengthInput.value = "";
+            lengthAnswer.value = "";
             return;
         }
 
         let fromMeter;
-        switch (lengthUnit.value) {
+        switch (lengthList.value) {
             case "Nanometer":
                 fromMeter = inputValue / 1000000;
                 break;
@@ -73,7 +113,7 @@
         }
 
         let toAny;
-        switch (lengthConvert.value) {
+        switch (lengthConverter.value) {
             case "Nanometer":
                 toAny = fromMeter * 1000000;
                 break;

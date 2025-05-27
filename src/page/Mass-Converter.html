@@ -8,36 +8,34 @@
     <title>Mass Converter</title>
 </head>
 <body>
-    <form action="" id="mass-form">
-        
         <label for="Mass-Unit">Mass to Convert:</label>
-        <select name="Mass-Unit" id="Mass-Unit">
-            <option value="Microgram">Microgram</option>
-            <option value="Milligram">Milligram</option>
-            <option value="Gram" selected>Gram</option>
-            <option value="Kilogram">Kilogram</option>
-            <option value="Ton">Ton</option>
-            <option value="Pound">Pound</option>
-            <option value="Ounce">Ounce</option>
-        </select>
-        <input type="text" name="Mass-Value" id="Mass-Value">
+        <input list="Mass-Unit" id="Mass-List" name="Mass-List" placeholder="Select a unit">
+
+        <datalist id="Mass-Unit">
+            <option value="Microgram">
+            <option value="Milligram">
+            <option value="Gram" selected>
+            <option value="Kilogram">
+            <option value="Ton">
+            <option value="Pound">
+            <option value="Ounce">
+        </datalist>
+        <input type="text" name="To-Mass" id="To-Mass">
 
         <button type="button" id="Mass-Switch"><img src="../../assets/img/switching.png" alt="Switch" width="30px" height="30px"></button>
 
-        <select name="To-Mass" id="To-Mass">
-            <option value="Microgram">Microgram</option>
-            <option value="Milligram">Milligram</option>
-            <option value="Gram">Gram</option>
-            <option value="Kilogram" selected>Kilogram</option>
-            <option value="Ton">Ton</option>
-            <option value="Pound">Pound</option>
-            <option value="Ounce">Ounce</option>
-        </select>
+        <input list="Mass-Convert" id="Mass-Converter" placeholder="Select a unit">
+        <datalist id="Mass-Convert">
+            <option value="Microgram">
+            <option value="Milligram">
+            <option value="Gram">
+            <option value="Kilogram" selected>
+            <option value="Ton">
+            <option value="Pound">
+            <option value="Ounce">
+        </datalist>
 
         <input type="text" name="Mass-Answer" id="Mass-Answer" disabled>
-        <button type="submit">Convert</button>
-        
-    </form>
     
     <div class="nav-links">
         <a href="../../index.html">Back to Home</a>

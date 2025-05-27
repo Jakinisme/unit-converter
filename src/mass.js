@@ -1,74 +1,112 @@
-const massForm = document.getElementById("mass-form");
+
+const massList = document.getElementById("Mass-List");
+const massInput = document.getElementById("To-Mass");
 
 const massAnswer = document.getElementById("Mass-Answer");
-const toMass = document.getElementById("To-Mass");
-
-const massUnit = document.getElementById("Mass-Unit");
-const massValue = document.getElementById("Mass-Value");
+const massConverter = document.getElementById("Mass-Converter");
 
 const massSwitch = document.getElementById("Mass-Switch");
 
-// Add event listeners
-massForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    convertMass();
+// Add event listener
+massInput.addEventListener("input", updateMassAnswer);
+
+massSwitch.addEventListener("click", switchUnits);
+
+massList.addEventListener("input", function() {
+    const validUnits = [
+        "Microgram", "Milligram", "Gram", "Kilogram", "Ton", "Pound", "Ounce"
+    ];
+    
+    // Only validate when the input loses focus (blur event)
+    massList.addEventListener("blur", function() {
+        if (!validUnits.includes(massList.value)) {
+            massList.value = "";
+        }
+    });
 });
 
-massSwitch.addEventListener("click", switchMassUnits);
+massConverter.addEventListener("input", function() {
+    const validUnits = [
+        "Microgram", "Milligram", "Gram", "Kilogram", "Ton", "Pound", "Ounce"
+    ];
+    
+    // Only validate when the input loses focus (blur event)
+    massConverter.addEventListener("blur", function() {
+        if (!validUnits.includes(massConverter.value)) {
+            massConverter.value = "";
+        }
+    });
+});
 
-function switchMassUnits() {
-    const tempUnit = massUnit.value;
-    massUnit.value = toMass.value;
-    toMass.value = tempUnit;
-}
+// Switch the units
+function switchUnits() {
+    const tempUnit = massList.value;
 
-function convertMass() {
-    const value = massValue.value;
-
-    if (value === "") {
-        alert("Please enter a value");
+    if (tempUnit === "" || massConverter.value === "") {
+        alert("Please select a unit");
         return;
     }
 
-    if (isNaN(value)) {
-        alert("Please enter a valid number");
+    massList.value = massConverter.value;
+    massConverter.value = tempUnit;
+}
+
+// Update the answer
+function updateMassAnswer() {
+    const convertedMass = convertMass();    
+    massAnswer.value = convertedMass.toAny;
+}
+
+// Convert the mass
+function convertMass() {
+    const inputValue = massInput.value;
+
+    if (massList.value === "") {
+        massInput.value = "";
+        alert("Please select a unit");
+        return;
+    }
+
+    if (inputValue === "" || isNaN(inputValue)) {
+        massInput.value = "";
+        massAnswer.value = "";
         return;
     }
 
     let fromGram;
-    switch (massUnit.value) {
+    switch (massList.value) {
         case "Microgram":
-            fromGram = value / 1000000;
+            fromGram = inputValue / 1000000;
             break;
         case "Milligram":
-            fromGram = value / 1000;
+            fromGram = inputValue / 1000;
             break;
-        case "Gram":
-            fromGram = value; // Gram is the base unit
+        case "Gram": // Gram is the base unit
+            fromGram = inputValue;
             break;
         case "Kilogram":
-            fromGram = value * 1000;
+            fromGram = inputValue * 1000;
             break;
         case "Ton":
-            fromGram = value * 1000000;
+            fromGram = inputValue * 1000000;
             break;
         case "Pound":
-            fromGram = value * 453.592;
+            fromGram = inputValue * 453.592;
             break;
         case "Ounce":
-            fromGram = value * 28.3495;
+            fromGram = inputValue * 28.3495;
             break;
     }
     
     let toAny;
-    switch (toMass.value) {
+    switch (massConverter.value) {
         case "Microgram":
             toAny = fromGram * 1000000;
             break;
         case "Milligram":
             toAny = fromGram * 1000;
             break;
-        case "Gram":
+        case "Gram": // Gram is the base unit
             toAny = fromGram;
             break;
         case "Kilogram":
@@ -86,4 +124,5 @@ function convertMass() {
     }
 
     massAnswer.value = toAny;
+    return { toAny };
 }
