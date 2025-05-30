@@ -1,4 +1,3 @@
-
 const massList = document.getElementById("Mass-List");
 const massInput = document.getElementById("To-Mass");
 
@@ -9,43 +8,34 @@ const massSwitch = document.getElementById("Mass-Switch");
 
 // Add event listener
 massInput.addEventListener("input", updateMassAnswer);
-
 massSwitch.addEventListener("click", switchUnits);
 
-massList.addEventListener("input", function() {
+function validateUnitInput(unitElement) {
     const validUnits = [
         "Microgram", "Milligram", "Gram", "Kilogram", "Ton", "Pound", "Ounce"
     ];
     
-    // Only validate when the input loses focus (blur event)
-    massList.addEventListener("blur", function() {
-        if (!validUnits.includes(massList.value)) {
-            massList.value = "";
+    unitElement.addEventListener("blur", () => {
+        if (!validUnits.includes(unitElement.value)) {
+            unitElement.value = "";
         }
-    });
-});
-
-massConverter.addEventListener("input", function() {
-    const validUnits = [
-        "Microgram", "Milligram", "Gram", "Kilogram", "Ton", "Pound", "Ounce"
-    ];
-    
-    // Only validate when the input loses focus (blur event)
-    massConverter.addEventListener("blur", function() {
-        if (!validUnits.includes(massConverter.value)) {
-            massConverter.value = "";
-        }
-    });
-});
+    })
+}
+validateUnitInput(massList)
+validateUnitInput(massConverter)
 
 // Switch the units
 function switchUnits() {
     const tempUnit = massList.value;
+    const tempValue = massInput.value;
 
     if (tempUnit === "" || massConverter.value === "") {
         alert("Please select a unit");
         return;
     }
+
+    massInput.value = massAnswer.value;
+    massAnswer.value = tempValue;
 
     massList.value = massConverter.value;
     massConverter.value = tempUnit;
@@ -58,9 +48,9 @@ function updateMassAnswer() {
     if (massList.value === "" || massConverter.value === "") {
         massInput.value = "";
         massAnswer.value = "";
-        alert("Please select a unit first")
-        return
+        return alert("Please select a unit first");
     }
+
     massAnswer.value = convertedMass.toAny;
 }
 
@@ -68,13 +58,7 @@ function updateMassAnswer() {
 function convertMass() {
     const inputValue = massInput.value;
 
-    if (massList.value === "") {
-        massInput.value = "";
-        alert("Please select a unit");
-        return;
-    }
-
-    if (inputValue === "" || isNaN(inputValue)) {
+    if (isNaN(inputValue)) {
         massInput.value = "";
         massAnswer.value = "";
         return;
@@ -130,5 +114,5 @@ function convertMass() {
             break;
     }
 
-    massAnswer.value = toAny;
+    return { toAny };
 }

@@ -1,4 +1,3 @@
-
     const lengthList = document.getElementById("Length-List");
     const lengthInput = document.getElementById("To-Length");
 
@@ -9,45 +8,35 @@
 
     // Add event listeners
     lengthInput.addEventListener("input", updateLengthAnswer);
-
     lengthSwitch.addEventListener("click", switchUnits);
 
-    lengthList.addEventListener("input", function() {
+    function validateUnitInput(inputElement) {
         const validUnits = [
             "Nanometer", "Micrometer", "Millimeter", "Centimeter", "Meter",
             "Kilometer", "Mile", "Yard", "Foot", "Inch", "Nautical-Mile"
         ];
-        
-        // Only validate when the input loses focus (blur event)
-        lengthList.addEventListener("blur", function() {
-            if (!validUnits.includes(lengthList.value)) {
-                lengthList.value = "";
+    
+        inputElement.addEventListener("blur", function () {
+            if (!validUnits.includes(inputElement.value)) {
+                inputElement.value = "";
             }
         });
-    });
-
-    lengthConverter.addEventListener("input", function() {
-        const validUnits = [
-            "Nanometer", "Micrometer", "Millimeter", "Centimeter", "Meter",
-            "Kilometer", "Mile", "Yard", "Foot", "Inch", "Nautical-Mile"
-        ];
-        
-        // Only validate when the input loses focus (blur event)
-        lengthConverter.addEventListener("blur", function() {
-            if (!validUnits.includes(lengthConverter.value)) {
-                lengthConverter.value = "";
-            }
-        });
-    });
-
+    }
+    validateUnitInput(lengthList);
+    validateUnitInput(lengthConverter);
+    
     // Switch the units
     function switchUnits() {
         const tempUnit = lengthList.value;
+        const tempValue = lengthInput.value;
 
         if (tempUnit === "" || lengthConverter.value === "") {
             alert("Please select a unit");
             return;
         }
+
+        lengthInput.value = lengthAnswer.value;
+        lengthAnswer.value = tempValue;
 
         lengthList.value = lengthConverter.value;
         lengthConverter.value = tempUnit;
@@ -60,6 +49,7 @@
         if (lengthList.value === "" || lengthConverter.value === "") {
             lengthInput.value = ""
             lengthAnswer.value = ""
+
             return alert("Please select a unit first");
         }
 
@@ -70,12 +60,7 @@
     function convertLength() {
         const inputValue = lengthInput.value
 
-        if (lengthList.value === "") {
-            lengthInput.value = "";
-            return alert("Please select a unit");
-        }
-
-        if (inputValue === "" || isNaN(inputValue)) {
+        if (isNaN(inputValue)) {
             lengthInput.value = "";
             lengthAnswer.value = "";
             return;

@@ -8,43 +8,32 @@ const volumeSwitch = document.getElementById("Volume-Switch");
 
 // Add event listeners
 volumeInput.addEventListener("input", updateVolumeAnswer);
-
 volumeSwitch.addEventListener("click", switchUnits);
 
-volumeList.addEventListener("input", function() {
-    const validUnits = [
-        "Milliliter", "Liter", "Gallon", "Cubic-Meter", "Cubic-Foot", "Cubic-Inch"
-    ];
-    
-    // Only validate when the input loses focus (blur event)
-    volumeList.addEventListener("blur", function() {
-        if (!validUnits.includes(volumeList.value)) {
-            volumeList.value = "";
-        }
-    });
-});
+function validateUnitInput(unitElement) {
+    const validUnits = ["Milliliter", "Liter", "Gallon", "Cubic-Meter", "Cubic-Foot", "Cubic-Inch"]
 
-volumeConverter.addEventListener("input", function() {
-    const validUnits = [
-        "Milliliter", "Liter", "Gallon", "Cubic-Meter", "Cubic-Foot", "Cubic-Inch"
-    ];
-    
-    // Only validate when the input loses focus (blur event)
-    volumeConverter.addEventListener("blur", function() {
-        if (!validUnits.includes(volumeConverter.value)) {
-            volumeConverter.value = "";
+    unitElement.addEventListener("blur", () => {
+        if (!validUnits.includes(unitElement.value)) {
+            unitElement.value = "";
         }
-    });
-});
+    })
+}
+validateUnitInput(volumeList);
+validateUnitInput(volumeConverter);
 
 // Switch the units
 function switchUnits() {
     const tempUnit = volumeList.value;
+    const tempValue = volumeInput.value;
 
     if (tempUnit === "" || volumeConverter.value === "") {
         alert("Please select a unit");
         return;
     }
+
+    volumeInput.value = volumeAnswer.value;
+    volumeAnswer.value = tempValue;
 
     volumeList.value = volumeConverter.value;
     volumeConverter.value = tempUnit;
@@ -67,12 +56,7 @@ function updateVolumeAnswer() {
 function convertVol() {
     const inputValue = volumeInput.value;
 
-    if (volumeList.value === "") {
-        volumeInput.value = "";
-        return alert("Please select a unit");
-    }
-
-    if (inputValue === "" || isNaN(inputValue)) {
+    if (isNaN(inputValue)) {
         volumeInput.value = "";
         volumeAnswer.value = "";
         return;
@@ -122,5 +106,5 @@ function convertVol() {
             break;
     }
     
-    volumeAnswer.value = toAny;
+    return { toAny };
 }

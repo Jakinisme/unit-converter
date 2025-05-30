@@ -82,6 +82,51 @@ datalist {
     background-position: right 12px center;
     background-size: 16px;
     padding-right: 40px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Dropdown specific styles */
+datalist option {
+    padding: 12px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+datalist option:hover {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+/* Responsive styles for dropdown */
+@media (max-width: 600px) {
+    datalist, input {
+        padding: 10px;
+        font-size: 0.95em;
+        margin-bottom: 15px;
+    }
+    
+    datalist {
+        background-size: 14px;
+        padding-right: 35px;
+    }
+}
+
+@media (max-width: 400px) {
+    datalist, input {
+        padding: 8px;
+        font-size: 0.9em;
+        margin-bottom: 12px;
+    }
+    
+    datalist {
+        background-size: 12px;
+        padding-right: 30px;
+    }
 }
 
 input[type="number"] {
